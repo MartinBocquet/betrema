@@ -23,7 +23,7 @@ def lister_phases(request):
     liste_match = list(Match.objects.filter(id_phase = 1).order_by('id_eq1__id_groupe', 'id_eq1'))
     liste_match2 = Match.objects.filter(id_phase = 1).filter(pari__id_parieur= request.user.id).order_by('id_eq1__id_groupe', 'id_eq1').annotate(pari1= Min('pari__pari_eq1')).annotate(pari2= Min('pari__pari_eq2'))
     machin = request.user.username
-    
+    machin = 'aaa'
     result = zip(liste_match, liste_pari)
     if request.method == 'POST':    
         tralala = request.POST
