@@ -1,0 +1,38 @@
+<h1>Bienvenue sur la liste des sites !</h1>
+{% if envoi %} {{score1}} tralala {% endif %}
+
+{{ machin }}
+
+
+
+</br>
+{% for match in liste_match2 %}
+ok {{match}} {{match.pari1}} {{match.pari2}}
+{% endfor %}
+
+
+{% regroup liste_match by id_eq1.id_groupe as liste_m %}
+
+<form action="{% url "lister_phases" %}" method="post">
+{% csrf_token %}
+	<ul>
+	{% for id_groupe in liste_m %}
+	    <li>{{ id_groupe.grouper }}
+	    <ul>
+	        {% for match in id_groupe.list %}
+	          <li>  <label for="f{{match.id_match}}_eq1">Score eq1 :</label> <input type="number" name="f{{match.id_match}}_eq1" value="1" min="0" max="10" id="f{{match.id_match}}_eq1" />
+				<label for="f{{match.id_match}}_eq2">Score eq2 :</label> <input type="number" name="f{{match.id_match}}_eq2" value="2" min="0" max="10" id="f{{match.id_match}}_eq2" />
+	          {{match.id_eq1}} - {{match.id_eq2}}</li>
+	        {% endfor %}
+	    </ul>
+	    </li>
+	{% endfor %}
+	</ul>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+{% for match,pari in result %}
+ok {{ pari }} {{match}}
+{% endfor %}
