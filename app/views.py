@@ -8,7 +8,7 @@ from django.forms import formset_factory
 from .models import Phase, Equipe, Match, Pari, User
 from .form import ContactForm, ScoreForm, MetaScoreForm, ConnexionForm
 from django.contrib.auth import authenticate, login, logout
-from django.core.urlresolvers import reverse
+#from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min, Sum
 
