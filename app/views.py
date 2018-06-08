@@ -36,4 +36,4 @@ def lister_phases(request):
             pari.pari_eq2 = tralala['f'+str(match.id_match)+'_'+'eq2']
             pari.save()
         envoi = True
-    return render(request, 'blog/lister_phases.html', locals())
+    return render(request, 'app/lister_phases.html', locals())
