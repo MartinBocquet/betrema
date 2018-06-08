@@ -201,7 +201,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'mysql-martinbocquet.alwaysdata.net',
-        'NAME': 'dbname',
+        'NAME': 'martinbocquet_betrema',
         'USER': '160892',
         'PASSWORD': 'aaa',
 }
