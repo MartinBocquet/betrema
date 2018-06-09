@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+
+<html>
+
+
+  <head>
+
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+
+
+  <body>
+    <div class="container-fluid">
+      <header class="row col-sm-12">
+        <div class="page-header">
+          <h1>Bet-rema : le site des paris du Cerema ! <img src="images/papillon.png" class="pull-right"></h1>
+        </div>
+      </header>
+      
+      <div class="row col-sm-12">
+        <nav class="col-sm-2">          
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"> <a href="#"> <span class="glyphicon glyphicon-home"></span> Parier </a> </li>
+            <li> <a href="#"> <span class="glyphicon glyphicon-book"></span> Voir les résultats </a> </li>
+            <li> <a href="#"> <span class="glyphicon glyphicon-facetime-video"></span> Mes préférences </a> </li>
+            <li> <a href="/../blog/deconnexion"> <span class="glyphicon glyphicon-remove-sign"></span> Deconnexion </a> </li>
+          </ul>
+        </nav>
+
+        <section class="col-sm-10">
+        {% block content %}
+
+		{% endblock %}
+        </section>
+
+      </div>
+
+      <footer class="row col-sm-12">
+
+        <div class="panel panel-body">
+
+          <p>Tous droits réservés par moi...</p>
+
+        </div>
+
+      </footer>
+
+    </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+<script>
+
+	$(":input").bind('keyup mouseup', function () {
+			var valeur = $(this).val();
+	
+			if (valeur == '') {           
+			$(this).parent().addClass("has-error");}
+			else { $(this).parent().removeClass("has-error");}
+	});
+	
+	
+
+</script>
+  </body>
+
+
+</html>
