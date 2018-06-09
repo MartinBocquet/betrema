@@ -73,4 +73,4 @@ def pari(request, phase):
             pari.save()
         liste_match = Match.objects.filter(id_phase = id_p).filter(pari__id_parieur= request.user.id).order_by('id_eq1__id_groupe', 'id_eq1').annotate(pari1= Min('pari__pari_eq1')).annotate(pari2= Min('pari__pari_eq2'))
         envoi = True        
-    return render(request, 'blog/pari.html', locals())
+    return render(request, 'app/pari.html', locals())
