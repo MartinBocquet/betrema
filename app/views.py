@@ -37,3 +37,40 @@ def lister_phases(request):
             pari.save()
         envoi = True
     return render(request, 'app/lister_phases.html', locals())
+
+def pari(request, phase):    
+    liste_phase = list(Phase.objects.all())
+
+    try:
+        id_p = Phase.objects.filter(nom_phase = phase)[0]
+    except IndexError:
+        id_p = Phase.objects.all().order_by('id_phase')[0]
+
+    phase_actuelle = id_p.nom_phase
+    liste_match = Match.objects.filter(id_phase = id_p).filter(pari__id_parieur= request.user.id).order_by('id_eq1__id_groupe', 'id_eq1').annotate(pari1= Min('pari__pari_eq1')).annotate(pari2= Min('pari__pari_eq2'))
+    if not liste_match:
+        liste_match=  Match.objects.filter(id_phase = id_p).order_by('id_eq1__id_groupe', 'id_eq1')
+
+    liste_eq_grp= Equipe.objects.all().order_by('id_groupe')
+    if request.method == 'POST':    
+        tralala = request.POST
+        for match in liste_match:
+            try:
+                pari = Pari.objects.get(id_match = match, id_parieur= request.user.id)
+            except Pari.DoesNotExist:
+                pari = Pari(id_match = match)
+                pari.id_parieur = User.objects.get(username= request.user.username)
+            if tralala['f'+str(match.id_match)+'_'+'eq1'] == '':
+                pari.pari_eq1 = None
+            else:
+                pari.pari_eq1 = tralala['f'+str(match.id_match)+'_'+'eq1']
+                
+            if tralala['f'+str(match.id_match)+'_'+'eq2'] == '':
+                pari.pari_eq2 = None
+            else:
+                pari.pari_eq2 = tralala['f'+str(match.id_match)+'_'+'eq2']
+            
+            pari.save()
+        liste_match = Match.objects.filter(id_phase = id_p).filter(pari__id_parieur= request.user.id).order_by('id_eq1__id_groupe', 'id_eq1').annotate(pari1= Min('pari__pari_eq1')).annotate(pari2= Min('pari__pari_eq2'))
+        envoi = True        
+    return render(request, 'blog/test_pari.html', locals())
