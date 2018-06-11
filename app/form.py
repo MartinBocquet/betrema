@@ -10,7 +10,7 @@ from .models import Joueur
     
     
 class ConnexionForm(forms.Form):
-    username = forms.CharField(label="Nom d'utilisateur", max_length=30)
+    username = forms.CharField(label="Nom d'utilisateur", max_length=30, help_text="prenom.nom")
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
     
 class UtilisateurForm(forms.Form):#UserCreationForm):
