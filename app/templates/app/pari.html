@@ -90,22 +90,24 @@
 
 						<div class="panel-body">
 							{% for match in id_groupe.list %}
-								  	<div class="row" , style="height:45px;>
-									<div class="col-sm-3">	{{ match.id_eq1}} </div>
-									<div class="col-lg-offset-1 col-sm-2">
+								<div class="row", style="height:45px;">
+									<div class="col-sm-3" >	
+									{{ match.id_eq1}} </div>
+									<div class="col-lg-offset-1 col-sm-2" style = "align-items:center">
 										{% if match.score_eq1 == None %}
 											
 										{% else %}
 											{{ match.score_eq1}}
 										{% endif %} 
 									</div>
-									<div class="col-lg-offset-1 col-sm-2"> 										
+									<div class="col-lg-offset-1 col-sm-2" style = "align-items:center"> 										
 										{% if match.score_eq1 == None %}	
 										{% else %}
 											{{ match.score_eq1}}
 										{% endif %}  </div>
-									<div class="col-sm-3">	{{ match.id_eq2}} </div>
+									<div class="col-sm-3" style = "align-items:center">	{{ match.id_eq2}}	</div>
 									
+	
 								</div>
 							{% endfor %}	
 						</div>
