@@ -22,7 +22,7 @@
 		<ul class="nav nav-tabs">
 		{% for phase in liste_phase %}
 		  <li role = "presentation"{% if phase.nom_phase == phase_actuelle %} class = "active" {% endif %}> 
-			  <a href="{% url "test_pari" phase=phase.nom_phase %}">{{phase.nom_phase}}</a>
+			  <a href="{% url "pari" phase=phase.nom_phase %}">{{phase.nom_phase}}</a>
 		  </li>	
 		{% endfor %}
 		</ul>
