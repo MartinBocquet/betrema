@@ -11,7 +11,7 @@ from django.contrib import messages
 def date_actuelle(request):
     return render(request, 'app/date.html', {'date': datetime.now()})
 
-
+@login_required
 def pari(request, phase):    
     liste_phase = list(Phase.objects.all())
 

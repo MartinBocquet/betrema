@@ -335,16 +335,16 @@ html{
 <script>
 $("#id_nom").keyup( function()
 {
-			var valeur_login = $(this).val()+"."+$("#id_prenom").val();
-			var valeur_mail = $(this).val()+"."+$("#id_prenom").val()+"@cerema.fr";
+			var valeur_login = $("#id_prenom").val() + "."+$(this).val();
+			var valeur_mail = $("#id_prenom").val()+"."+$(this).val()+"@cerema.fr";
 			$("#id_login").val(valeur_login);
 			$("#id_mail").val(valeur_mail);
 });
 
 $("#id_prenom").keyup( function()
 {
-			var valeur_login2 = $("#id_nom").val()+"."+$(this).val();
-			var valeur_mail2 = $("#id_nom").val()+"."+$(this).val()+"@cerema.fr";
+			var valeur_login2 = $(this).val()+"."+$("#id_nom").val();
+			var valeur_mail2 = $(this).val()+"."+$("#id_nom").val()+"@cerema.fr";
 			$("#id_login").val(valeur_login2);
 			$("#id_mail").val(valeur_mail2);
 });
