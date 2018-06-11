@@ -52,7 +52,7 @@ class Phase(models.Model):
         return self.nom_phase
 
 class Joueur(models.Model):
-     user = models.OneToOneField(User)
+     user = models.OneToOneField(User, on_delete=models.CASCADE,  primary_key=True)
      nom = models.CharField(max_length=42) 
      prenom = models.CharField(max_length=42) 
      service = models.CharField(max_length=42, null = True,blank=True)
