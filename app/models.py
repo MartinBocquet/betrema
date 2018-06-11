@@ -53,8 +53,8 @@ class Phase(models.Model):
 
 class Joueur(models.Model):
      user = models.OneToOneField(User, on_delete=models.CASCADE,  primary_key=True)
-     nom = models.CharField(max_length=42) 
      prenom = models.CharField(max_length=42) 
+     nom = models.CharField(max_length=42) 
      service = models.CharField(max_length=42, null = True,blank=True)
      mail = models.EmailField(max_length=42) 
      
