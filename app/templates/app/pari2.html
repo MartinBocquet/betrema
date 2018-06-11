@@ -10,19 +10,19 @@
 
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">{{phase_actuelle}} Bienvenue {{ user.username }}   {{ user.joueur.nom }}   </h3>
+              <h3 class="panel-title">Bienvenue {{ user.username }}   </h3>
             </div>
 
 		{% if envoi %}
           <div class="panel panel-default">
-            <div class="alert alert-success" role="alert"> Vos scores ont bien été enregistrés </div>
+            <div class="alert alert-success" role="alert"> Vos scores ont bien  été enregistrés </div>
             </div>
         {% endif %}
 
 		<ul class="nav nav-tabs">
 		{% for phase in liste_phase %}
 		  <li role = "presentation"{% if phase.nom_phase == phase_actuelle %} class = "active" {% endif %}> 
-			  <a href="{% url "test_pari" phase=phase.nom_phase %}">{{phase.nom_phase}}</a>
+			  <a href="{% url "pari" phase=phase.nom_phase %}">{{phase.nom_phase}}</a>
 		  </li>	
 		{% endfor %}
 		</ul>
@@ -56,12 +56,7 @@
 						</div>
 					</div>
 
-										
-					 
-										
-
-
-
+								
 					<div class="panel panel-default">
 					  	<div class="panel-heading">
 							<h3 class="panel-title">Paris</h3>
@@ -71,12 +66,7 @@
 						{% for match in id_groupe.list %}
 
 							  	<div class="row">
-									<div class="col-sm-3">	{% if match.id_eq1|wordcount == 1 %} 
-																{{ match.id_eq1|ljust:"10"}}
-															{% else %}
-																{{ match.id_eq1|ljust:"10"}}
-															{% endif %}
-									</div>
+									<div class="col-sm-3">	{{ match.id_eq1}} </div>
 									<div class="form-group col-sm-3">	
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq1" value="{{match.pari1}}" min="0" max="10" id="f{{match.id_match}}_eq1" />
 									</div>
@@ -84,11 +74,7 @@
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq2" value="{{match.pari2}}" min="0" max="10" id="f{{match.id_match}}_eq2" />
 									</div>
 	
-									<div class="col-sm-3">	{% if match.id_eq2|wordcount == 1 %} 
-																{{ match.id_eq2|ljust:"10"}}</br>
-															{% else %}
-																{{ match.id_eq2|ljust:"10"}}
-															{% endif %} </div>
+									<div class="col-sm-3">	{{ match.id_eq2}} </div>
 	
 								</div>
 
