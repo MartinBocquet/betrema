@@ -148,7 +148,7 @@ SECRET_KEY = 'l!g!a3l@7d(mm97t88l6wlr&h_g_x$*v4_qreq$ix%%qi+ii8='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['martinbocquet.alwaysdata.net']
+ALLOWED_HOSTS = ['martinbocquet.alwaysdata.net/']
 
 
 # Application definition
@@ -231,8 +231,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-#LOGIN_URL = '/app/connexion'#'/blog/connexion/'
-#LOGIN_REDIRECT_URL = '/app/pari'
+LOGIN_URL = '/app/connexion'#'/blog/connexion/'
+LOGIN_REDIRECT_URL = '/app/pari'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
