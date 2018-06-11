@@ -1,16 +1,11 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render
 from datetime import datetime
-from django.forms import formset_factory
 from .models import Phase, Equipe, Match, Pari, User, Joueur
 from .form import ConnexionForm, UtilisateurForm, JoueurForm
-from django.contrib.auth import authenticate, login, logout
-from django.core.urlresolvers import reverse
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg, Count, Min, Sum
-from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Min
 from django.contrib import messages
-from django.contrib.auth.models import User
 
 # Create your views here.
 def date_actuelle(request):
