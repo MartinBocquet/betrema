@@ -62,7 +62,7 @@ def inscription(request):
             joueur.user =   user
             joueur.save()
             messages.success(request, 'Le compte a été créé : vous pouvez maintenant vous connecter')
-            return render(request, 'app/pari.html', locals())
+            return render(request, 'app/connexion.html', locals())
     else:
         form = JoueurForm()
         form2 = UtilisateurForm()
