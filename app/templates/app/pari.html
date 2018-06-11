@@ -66,7 +66,7 @@
 						{% for match in id_groupe.list %}
 
 							  	<div class="row">
-									<div class="col-sm-3">	{{ match.id_eq1|ljust:"10"}} </div>
+									<div class="col-sm-3">	{{ match.id_eq1}} </div>
 									<div class="form-group col-sm-3">	
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq1" value="{{match.pari1}}" min="0" max="10" id="f{{match.id_match}}_eq1" />
 									</div>
@@ -74,7 +74,7 @@
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq2" value="{{match.pari2}}" min="0" max="10" id="f{{match.id_match}}_eq2" />
 									</div>
 	
-									<div class="col-sm-3">	{{ match.id_eq2|rjust:"10"}} </div>
+									<div class="col-sm-3">	{{ match.id_eq2}} </div>
 	
 								</div>
 

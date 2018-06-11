@@ -196,7 +196,7 @@ WSGI_APPLICATION = 'betrema.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
- 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -231,8 +231,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-LOGIN_URL = '/app/connexion'#'/blog/connexion/'
-LOGIN_REDIRECT_URL = '/app/pari'
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
