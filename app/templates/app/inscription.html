@@ -304,7 +304,13 @@ html{
                 <h1>Inscription</h1>
             </div>
 
-
+			{% if form.errors %}
+			<div class="alert alert-warning" role="alert" style = "color: #721c24;
+background-color: #f8d7da;
+border-color: #f5c6cb;">
+			<p>Les deux mots de passe ne correspondent pas</br></p>
+			</div>
+{% endif %}
              
              {% for field in form %}
              <div class="form-row">
@@ -361,5 +367,24 @@ $("#id_login").keyup( function()
 	$("#id_prenom").unbind('keyup')
 	$("#id_nom").unbind('keyup')
 });
+
+$("#id_password2").keyup( function()
+{
+	if  ($(this).val() != $("#id_password1").val())
+	{
+        $(this).css({ 
+        borderColor : 'red',
+        color : 'red'
+        });
+    }
+    else{
+    $(this).css({
+        borderColor : 'green',
+        color : 'green'
+    });
+
+    }
+});
+
 
 </script>

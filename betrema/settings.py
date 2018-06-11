@@ -99,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 LOGIN_URL = '/app/connexion'#'/blog/connexion/'
-LOGIN_REDIRECT_URL = '/app/connexion'
+LOGIN_REDIRECT_URL = '/app/pari'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
