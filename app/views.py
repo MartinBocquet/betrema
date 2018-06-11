@@ -11,10 +11,10 @@ from django.contrib import messages
 def date_actuelle(request):
     return render(request, 'app/date.html', {'date': datetime.now()})
 
+
 @login_required
 def pari(request, phase):    
     liste_phase = list(Phase.objects.all())
-
     try:
         id_p = Phase.objects.filter(nom_phase = phase)[0]
     except IndexError:
