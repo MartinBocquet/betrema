@@ -10,7 +10,7 @@
 
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">{{phase_actuelle}} Bienvenue {{ user.username }}   </h3>
+              <h3 class="panel-title">Bienvenue {{ user.username }}   </h3>
             </div>
 
 		{% if envoi %}
@@ -56,12 +56,7 @@
 						</div>
 					</div>
 
-										
-					 
-										
-
-
-
+								
 					<div class="panel panel-default">
 					  	<div class="panel-heading">
 							<h3 class="panel-title">Paris</h3>
@@ -71,7 +66,7 @@
 						{% for match in id_groupe.list %}
 
 							  	<div class="row">
-									<div class="col-sm-3">	{{ match.id_eq1}} </div>
+									<div class="col-sm-3">	{{ match.id_eq1|ljust:"10"}} </div>
 									<div class="form-group col-sm-3">	
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq1" value="{{match.pari1}}" min="0" max="10" id="f{{match.id_match}}_eq1" />
 									</div>
@@ -79,7 +74,7 @@
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq2" value="{{match.pari2}}" min="0" max="10" id="f{{match.id_match}}_eq2" />
 									</div>
 	
-									<div class="col-sm-3">	{{ match.id_eq2}} </div>
+									<div class="col-sm-3">	{{ match.id_eq2|rjust:"10"}} </div>
 	
 								</div>
 
@@ -90,12 +85,12 @@
 					<div class="panel panel-default">
 					  <div class="panel-heading">
 
-						<h3 class="panel-title">R�sultats</h3>
+						<h3 class="panel-title">Résultats</h3>
 						</div>
 
 						<div class="panel-body">
 							{% for match in id_groupe.list %}
-								  	<div class="row">
+								  	<div class="row" , style="height:45px;>
 									<div class="col-sm-3">	{{ match.id_eq1}} </div>
 									<div class="col-lg-offset-1 col-sm-2">
 										{% if match.score_eq1 == None %}
@@ -111,7 +106,6 @@
 										{% endif %}  </div>
 									<div class="col-sm-3">	{{ match.id_eq2}} </div>
 									
-	
 								</div>
 							{% endfor %}	
 						</div>

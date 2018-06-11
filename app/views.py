@@ -1,42 +1,21 @@
-from django.shortcuts import render
-
-from datetime import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from datetime import datetime
 from django.forms import formset_factory
-from .models import Phase, Equipe, Match, Pari, User
-from .form import ContactForm, ScoreForm, MetaScoreForm, ConnexionForm
+from .models import Phase, Equipe, Match, Pari, User, Joueur
+from .form import ConnexionForm, UtilisateurForm, JoueurForm
 from django.contrib.auth import authenticate, login, logout
-#from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min, Sum
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 def date_actuelle(request):
     return render(request, 'app/date.html', {'date': datetime.now()})
 
-def lister_phases(request):    
-    liste_match = Match.objects.filter(id_phase = 1)
-    form = ScoreForm(request.POST or None)
-    liste_pari  = list(Pari.objects.all().filter(id_match__id_phase = 1, id_parieur= request.user.id).order_by('id_match__id_eq1__id_groupe', 'id_match__id_eq1'))
-    liste_match = list(Match.objects.filter(id_phase = 1).order_by('id_eq1__id_groupe', 'id_eq1'))
-    liste_match2 = Match.objects.filter(id_phase = 1).filter(pari__id_parieur= request.user.id).order_by('id_eq1__id_groupe', 'id_eq1').annotate(pari1= Min('pari__pari_eq1')).annotate(pari2= Min('pari__pari_eq2'))
-    machin = request.user.username
-    machin = 'aaa'
-    result = zip(liste_match, liste_pari)
-    if request.method == 'POST':    
-        tralala = request.POST
-        for match in liste_match:
-            pari = Pari()
-            pari.id_match = Match.objects.get(id_match = match.id_match)
-            pari.id_parieur = User.objects.get(username = request.user.username)
-            test = 'f'+str(match.id_match)+'_'+'eq1'
-            pari.pari_eq1 = tralala['f'+str(match.id_match)+'_'+'eq1']
-            pari.pari_eq2 = tralala['f'+str(match.id_match)+'_'+'eq2']
-            pari.save()
-        envoi = True
-    return render(request, 'app/lister_phases.html', locals())
 
 def pari(request, phase):    
     liste_phase = list(Phase.objects.all())
@@ -74,3 +53,38 @@ def pari(request, phase):
         liste_match = Match.objects.filter(id_phase = id_p).filter(pari__id_parieur= request.user.id).order_by('id_eq1__id_groupe', 'id_eq1').annotate(pari1= Min('pari__pari_eq1')).annotate(pari2= Min('pari__pari_eq2'))
         envoi = True        
     return render(request, 'app/pari.html', locals())
+
+def inscription(request):
+    if request.method == 'POST':
+        form = JoueurForm(request.POST)
+        form2 = UtilisateurForm(request.POST)
+        if form.is_valid() and form2.is_valid():
+            login = form2.cleaned_data['login']
+            password = form2.cleaned_data['password1']
+            mail = form.cleaned_data['mail']
+            user = User.objects.create_user(login, mail, password)
+            joueur = form.save(commit=False)
+            joueur.user =   user
+            joueur.save()
+            messages.success(request, 'Le compte a été créé : vous pouvez maintenant vous connecter')
+            return render(request, 'app/pari.html', locals())
+    else:
+        form = JoueurForm()
+        form2 = UtilisateurForm()
+    return render(request, 'app/inscription.html', locals())
+
+def connexion(request):
+    error = False
+    if request.method == "POST":
+        form = ConnexionForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
+            if user:  # Si l'objet renvoyé n'est pas None
+                login(request, user)  # nous connectons l'utilisateur
+            else: # sinon une erreur sera affichée
+                error = True
+    else:
+        form = ConnexionForm()
+    return render(request, 'blog/connexion.html', locals())
