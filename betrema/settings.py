@@ -231,8 +231,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-LOGIN_URL = '/blog/connect_gen'#'/blog/connexion/'
-LOGIN_REDIRECT_URL = '/blog/test_pari'
+LOGIN_URL = '/app/connect_gen'#'/blog/connexion/'
+LOGIN_REDIRECT_URL = '/app/test_pari'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
