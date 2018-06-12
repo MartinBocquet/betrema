@@ -2,7 +2,27 @@
 {% extends "base.html" %}
 
 {% block content %}	
+<style>
 
+.bouton_gauche{
+    padding-right: 2px; 
+    padding-left: 10px;
+}
+.bouton_droit{
+    padding-right: 10px; 
+    padding-left: 2px;
+}
+.interieur_gauche{
+text-align: left; 
+padding-right: 5px; 
+padding-left: 10px;
+}
+.interieur_droit{
+text-align: right; 
+padding-right: 10px; 
+padding-left: 5px;
+}
+</style>
 	{% regroup liste_match by id_eq1.id_groupe as liste_m %}
 
 		<form action="{% url "pari" phase=phase_actuelle %}" method="post">
@@ -56,25 +76,15 @@
 
 						<div class="panel-body">
 						{% for match in id_groupe.list %}
-
-							  	<div class="row">
-									<div class="col-sm-3">	{% if match.id_eq1|wordcount == 1 %} 
-																{{ match.id_eq1|ljust:"10"}}
-															{% else %}
-																{{ match.id_eq1|ljust:"10"}}
-															{% endif %}
-									</div>
-									<div class="form-group col-sm-3" style ="padding-right: 10px; padding-left: 10px;">	
+								<div class="row">
+									<div class="col-xs-3 interieur_gauche">	{{ match.id_eq1}}</div>
+									<div class="form-group col-xs-3 bouton_gauche">	
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq1" value="{{match.pari1}}" min="0" max="10" id="f{{match.id_match}}_eq1" />
 									</div>
-									<div class="form-group col-sm-3" style ="padding-right: 10px; padding-left: 10px;">
+									<div class="form-group col-xs-3 bouton_droit">
 										<input class="form-control" type="number" name="f{{match.id_match}}_eq2" value="{{match.pari2}}" min="0" max="10" id="f{{match.id_match}}_eq2" />
 									</div>
-									<div class="col-sm-3">	{% if match.id_eq2|wordcount == 1 %} 
-																{{ match.id_eq2|ljust:"10"}}</br>
-															{% else %}
-																{{ match.id_eq2|ljust:"10"}}
-															{% endif %} </div>
+									<div class="col-xs-3 interieur_droit">	{{ match.id_eq2}}</div>
 								</div>
 						{% endfor %}						
 						</div>
@@ -88,7 +98,7 @@
 						<div class="panel-body">
 							{% for match in id_groupe.list %}
 								<div class="row", style="height:45px;">
-									<div class="col-sm-3" >	
+									<div class="col-xs-3 interieur_gauche">
 									{{ match.id_eq1}} </div>
 									<div class="col-lg-offset-1 col-sm-2" style = "align-items:center">
 										{% if match.score_eq1 == None %}
@@ -102,9 +112,7 @@
 										{% else %}
 											{{ match.score_eq1}}
 										{% endif %}  </div>
-									<div class="col-sm-3" style = "align-items:center">	{{ match.id_eq2}}	</div>
-									
-	
+									<div class="col-xs-3 interieur_droit">	{{ match.id_eq2}}	</div>
 								</div>
 							{% endfor %}	
 						</div>
