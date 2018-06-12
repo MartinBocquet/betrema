@@ -56,7 +56,7 @@ class Joueur(models.Model):
      prenom = models.CharField(max_length=42) 
      nom = models.CharField(max_length=42) 
      service = models.CharField(max_length=42, null = True,blank=True)
-     mail = models.EmailField(max_length=42) 
+     mail = models.EmailField(max_length=80) 
      
      def __str__(self):
         return self.prenom
