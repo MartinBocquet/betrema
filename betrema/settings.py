@@ -15,7 +15,7 @@ SECRET_KEY = 'l!g!a3l@7d(mm97t88l6wlr&h_g_x$*v4_qreq$ix%%qi+ii8='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['martinbocquet.alwaysdata.net']
+ALLOWED_HOSTS = ['martinbocquet.alwaysdata.net']
 
 
 # Application definition
