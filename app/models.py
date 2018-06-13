@@ -36,10 +36,18 @@ class Match(models.Model):
     score_eq1 = models.PositiveSmallIntegerField(null = True,blank=True)
     score_eq2 = models.PositiveSmallIntegerField(null = True,blank=True)
     id_phase = models.ForeignKey('Phase', on_delete=models.CASCADE,)
+    ferme = models.BooleanField()
     
     def __str__(self):
-        return self.lieu    
-    
+        return self.lieu  
+      
+class Resultat(models.Model):
+    user = models.OneToOneField(User)
+    nb_match_pari = models.PositiveIntegerField()
+    nb_match_gagnant = models.PositiveIntegerField()
+    nb_score_gagnant = models.PositiveIntegerField()
+    nb_match_point = models.PositiveIntegerField()
+    nb_score_point = models.PositiveIntegerField()    
     
 class Phase(models.Model):
     id_phase = models.AutoField(primary_key=True)

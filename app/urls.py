@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'inscription/$', views.inscription, name='inscription'),
     url(r'deconnect_gen$', auth_views.logout_then_login, name='deconnect_gen'),
     url(r'connexion$', auth_views.login, {'template_name': 'app/connexion.html', 'redirect_field_name': '/app/pari'}),
+    url(r'lister_joueur/', views.lister_joueur, name='lister_joueur'),
     ]

@@ -83,3 +83,8 @@ def connexion(request):
     else:
         form = ConnexionForm()
     return render(request, 'blog/connexion.html', locals())
+
+def lister_joueur(request):
+    #liste_joueur = Joueur.objects.all()
+    liste_joueur = Joueur.objects.row('''select * from blog_Match''')
+    return render(request, 'app/lister_joueur.html', locals())

@@ -66,11 +66,11 @@ WSGI_APPLICATION = 'betrema.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'mysql-martinbocquet.alwaysdata.net',
-        'NAME': 'martinbocquet_betrema',
-        'USER': '160892',
-        'PASSWORD': 'aaa',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'localhost',
+        'NAME': 'fichiersfonciers',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
 }
 }
 
